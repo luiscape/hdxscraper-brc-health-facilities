@@ -16,7 +16,9 @@ parseCPS <- function(df = NULL, d = NULL) {
   # indID
   # name
   # units
-  indicator <- read.csv(paste0(onSw(), 'data/source/indicator.csv'))
+  indicator <- data.frame(indID = 'CHD.HTH.144', 
+                          name ='Total Number of Ebola Health Facilities',
+                          units = 'Count')
   
   ## Dataset schema:
   # dsID
@@ -24,10 +26,10 @@ parseCPS <- function(df = NULL, d = NULL) {
   # last_scraped
   # name
   dataset <- data.frame(
-    dsID = 'fts-ebola',
-    last_updated = as.character(max(as.Date(value$period))),
+    dsID = 'brc-health-facilities',
+    last_updated = date,
     last_scraped = as.character(Sys.Date()),
-    name = 'FTS Ebola Indicators'
+    name = 'British Red Cross Health Facilities'
   )
   
   ### Writing CSVs ###
@@ -41,6 +43,3 @@ parseCPS <- function(df = NULL, d = NULL) {
   writeTables(dataset, "dataset", "scraperwiki")
   writeTables(value, "value", "scraperwiki")
 }
-
-
-'Total Number of Ebola Health Facilities'
