@@ -4,7 +4,7 @@
 library(RCurl)
 
 # ScraperWiki deploy function
-onSw <- function(a = T, b = 'tool/') {
+onSw <- function(a = F, b = 'tool/') {
   if (a == T) return(b)
   else return('')
 }
@@ -43,6 +43,7 @@ runScraper <- function() {
   writeTables(dataset, "dataset", "scraperwiki")
   write.table(dataset, paste0(onSw(), 'data/dataset.csv'), row.names = F, col.names = F, sep = ",")
 }
+
 
 # Changing the status of SW.
 tryCatch(runScraper(),

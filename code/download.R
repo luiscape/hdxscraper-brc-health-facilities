@@ -3,7 +3,7 @@ downloadData <- function() {
   cat('Downloading file: ')
   # Downloading and processing file
   url = ('http://docs.google.com/spreadsheets/d/1iR-JFC3CUykIHfw88Plvfoukvww6AZaf-EYYrOn_KYw/export?format=csv')
-  s = paste(onSw(), 'data/brc-health-facilities-data.csv', sep='')
+  s = paste0(onSw(), 'data/source/brc-health-facilities-data.csv')
   download.file(url, s, method = 'curl', extra = '-L', quiet = T)
   
   # Reading file

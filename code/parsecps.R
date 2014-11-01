@@ -11,15 +11,17 @@ parseCPS <- function(df = NULL, d = NULL) {
     is_number = 1,
     source = 'https://docs.google.com/spreadsheets/d/1iR-JFC3CUykIHfw88Plvfoukvww6AZaf-EYYrOn_KYw/edit#gid=1474657653'
   )
-  
+
   ## Indicator schema:
   # indID
   # name
   # units
-  indicator <- data.frame(indID = 'CHD.HTH.144', 
-                          name ='Total Number of Ebola Health Facilities',
-                          units = 'Count')
-  
+  indicator <- data.frame(
+    indID = 'CHD.HTH.144',
+    name ='Total Number of Ebola Health Facilities',
+    units = 'Count'
+  )
+
   ## Dataset schema:
   # dsID
   # last_updated
@@ -27,17 +29,11 @@ parseCPS <- function(df = NULL, d = NULL) {
   # name
   dataset <- data.frame(
     dsID = 'brc-health-facilities',
-    last_updated = date,
+    last_updated = d,
     last_scraped = as.character(Sys.Date()),
     name = 'British Red Cross Health Facilities'
   )
-  
-  ### Writing CSVs ###
-  write.table(indicator, paste0(onSw(), 'data/indicator.csv'), row.names = F, col.names = F, sep = ",")
-  write.table(dataset, paste0(onSw(), 'data/dataset.csv'), row.names = F, col.names = F, sep = ",")
-  write.table(value, paste0(onSw(), 'data/value.csv'), row.names = F, col.names = F, sep = ",")
-  cat('Done!\n')
-  
+
   # Storing output.
   writeTables(indicator, "indicator", "scraperwiki")
   writeTables(dataset, "dataset", "scraperwiki")

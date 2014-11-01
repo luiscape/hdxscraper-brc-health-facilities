@@ -4,7 +4,6 @@ library(sqldf)
 writeTables <- function(df = NULL, 
                         table_name = NULL, 
                         db = NULL, 
-                        testing = FALSE, 
                         append = FALSE) {
   # sanity check
   if(is.null(df) == TRUE) stop("Don't forget to provide a data.frame.")
@@ -32,22 +31,6 @@ writeTables <- function(df = NULL,
                  row.names = FALSE,
                  append = TRUE)
   }
-  
-  # testing mode
-  if(testing == TRUE) {
-    # testing for the correct table name
-    if (table_name %in% dbListTables(db)) {
-      message(paste('The table', table_name, 'is in the db.'))
-    }
-    
-    # testing for the table with data
-    # and sample data
-    x <- dbReadTable(db, table_name)
-    if (is.data.frame(x) == TRUE) { 
-      message(paste('There is a table with', nrow(x), 'records. The head is:'))
-      print(head(x, 5))
-    }
-  } 
 
   dbDisconnect(db)
   cat('Done!\n')
