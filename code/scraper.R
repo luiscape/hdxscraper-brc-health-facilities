@@ -4,7 +4,7 @@
 library(RCurl)
 
 # ScraperWiki deploy function
-onSw <- function(a = F, b = 'tool/') {
+onSw <- function(a = T, b = 'tool/') {
   if (a == T) return(b)
   else return('')
 }
